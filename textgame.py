@@ -1,49 +1,52 @@
 import random
 
-
+global health
 health = 100
-gold = 0 
+global gold
+gold = 0
 
 def main():
-  print 'health = ' + str(health)
-  print 'gold = ' + str(gold)
-  
-  print 'The sun rises, it is a new day.'
-  print 'Would you like to: [A]dventure or [H]unt?'
 
-  action = raw_input
+  while True:
+    print 'health = ' + str(health)
+    print 'gold = ' + str(gold)
 
-  if action == 'a' or 'A':
-    adventure()
+    print 'The sun rises, it is a new day.'
+    print 'Would you like to: [A]dventure or [H]unt?'
 
-  if action == 'h' or 'H':
-    hunt()
+    action = raw_input()
 
-  else:
-    print 'Invalid input'
-    main()
+    if action == 'a' or 'A':
+      adventure()
 
+    if action == 'h' or 'H':
+      hunt()
+
+    else:
+      print 'Invalid input'
 
 def adventure():
+  global health
+  global gold
   print 'You are going on an Adventure!'
   print 'You encounter advisiories, prepare to fight!'
   print 'Fighting ensues'
 
   ya = random.randrange(0, 10)
   ea = random.randrange(0, 10)
-    
+
   if ya  >= ea:
     print 'You have won the fight!'
     gold += 50
-    main()
-   
+    return
+
   else:
     print 'You have lost the fight!'
     print 'You lose 10 healthpoints'
     health -= 10
-    main()
+    return
 
-def hunt(): 
+def hunt():
   print 'You are going hunting!'
   print 'You enter the woods and search for game.'
 
@@ -52,30 +55,29 @@ def hunt():
 
   if game == hunter:
     print 'You have spotted wild game!'
-      
+
     shot = random.randrange(0, 2)
-    
+
     if shot == game:
       print 'You got it!'
       print 'You cook and eat your meal.'
       print 'You gain 10 health points!'
-      main()
-      
+      return
+
     else:
       print 'It got away...'
-      main()
+      return
 
   else:
     print 'You spend the day wondering through the woods, but find nothing'
-    main()  
+    return
 
 
 print 'Hello! Prepare for a text based adventure! When asked a question, Type your response and hit the RETURN key. Lets try it now. What is your name?'
-name = raw_input
+name = raw_input()
 
 print 'Hello ' + str(name)
 
 print 'It is time for your adventure to begin.'
 
 main()
-
