@@ -16,10 +16,10 @@ def main():
 
     action = raw_input()
 
-    if action == 'a' or 'A':
+    if action == 'a' or action == 'A':
       adventure()
 
-    if action == 'h' or 'H':
+    elif action == 'h' or action == 'H':
       hunt()
 
     else:
